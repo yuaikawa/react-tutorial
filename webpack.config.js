@@ -1,11 +1,15 @@
+// eslint-disable-next-line no-undef
 const path = require('path');
+// eslint-disable-next-line no-undef
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
- 
+
+// eslint-disable-next-line no-undef
 const publidDir = path.join(__dirname, '/public');
+// eslint-disable-next-line no-undef
 module.exports = [
   {
     entry: [
-      './src/index.js',
+      './src/index.jsx',
     ],
     output: {
       path: publidDir,
@@ -13,7 +17,7 @@ module.exports = [
       filename: 'bundle.js',
     },
     module: {
-      loaders: [{
+      rules: [{
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
@@ -39,7 +43,7 @@ module.exports = [
       filename: 'bundle.css',
     },
     module: {
-      loaders: [
+      rules: [
         {
           test: /\.css$/,
           loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' }),
