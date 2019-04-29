@@ -1,11 +1,7 @@
-// eslint-disable-next-line no-undef
 const path = require('path');
-// eslint-disable-next-line no-undef
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-// eslint-disable-next-line no-undef
 const publidDir = path.join(__dirname, '/public');
-// eslint-disable-next-line no-undef
 module.exports = [
   {
     entry: [
