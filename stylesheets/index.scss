@@ -1,5 +1,10 @@
 $background-color : rgb(226, 222, 222);
 
+
 body{
     background-color: $background-color;
+    text-align: center;
+    color: cadetblue;
 }
+
+@import 'GeocodeResult';
