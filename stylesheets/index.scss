@@ -1,9 +1,11 @@
 $background-color : rgb(226, 222, 222);
+$base-margin: 40px;
 
 
 body{
     background-color: $background-color;
     color: cadetblue;
+    margin: 0;
 }
 
 @import 'Reset';

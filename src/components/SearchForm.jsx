@@ -1,42 +1,23 @@
-import React, { Component,PropTypes } from "react";
-import { className } from "postcss-selector-parser";
+import React, { PropTypes } from "react";
 
-class SearchForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  // 場所の名前を変更するアクション
-  handlePlaceChange(place) {
-    this.setState({ place });
-  }
-
-  // submitのアクション
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.onSubmit(this.state.place);
-  }
-
-  render() {
-    return (
-      <form className="search-form" onSubmit={e =>this.handleSubmit(e)}>
-        <input
-          className="place-input"
-          type="text"
-          size="30"
-          value={this.state.place}
-          onChange={e => this.handlePlaceChange(e.target.value)}
-        />
-        <input className="submit-button" type="submit" value="検索"/>
-      </form>
-    );
-  }
-}
+const SearchForm = props => (
+  <form className="search-form" onSubmit={(e) => props.onSubmit(e)}>
+    <input
+      className="place-input"
+      type="text"
+      size="30"
+      value={props.place}
+      onChange={e => props.onPlaceChange(e.target.value)}
+    />
+    <input className="submit-button" type="submit" value="検索" />
+  </form>
+);
 
 // バリデーション
 SearchForm.propTypes = {
+  onPlaceChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  place: PropTypes.string.isRequired
 };
 
 export default SearchForm;
