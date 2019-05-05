@@ -52,8 +52,9 @@ class SearchPage extends Component {
     });
   }
   // 場所の名前を変更するアクション
-  handlePlaceChange(place) {
-    this.setState({ place });
+  handlePlaceChange(e) {
+    e.preventDefault();
+    this.props.onPlaceChange(e.target.value);
   }
 
   // 検索処理を担う
@@ -99,11 +100,11 @@ class SearchPage extends Component {
       <div className="search-page">
         <h1 className="app-title">ホテル検索</h1>
         <SearchForm
-          place={this.state.place}
-          onPlaceChange={place => this.handlePlaceChange(place)}
-          onSubmit={(e) => this.handlePlaceSubmit(e)}
+          place={this.props.place}
+          onPlaceChange={e => this.handlePlaceChange(e)}
+          onSubmit={e => this.handlePlaceSubmit(e)}
         />
-        <div className="result-area">
+        {/* <div className="result-area">
           <Map location={this.state.location} />
           <div className="result-right">
             <GeocodeResult
@@ -117,7 +118,7 @@ class SearchPage extends Component {
               onSort={sortKey => this.handSortkeyChange(sortKey)}
             />
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
@@ -125,7 +126,9 @@ class SearchPage extends Component {
 
 SearchPage.propTypes = {
   history: PropTypes.shape({ push: PropTypes.func }).isRequired,
-  location: PropTypes.shape({ search: PropTypes.string }).isRequired
+  location: PropTypes.shape({ search: PropTypes.string }).isRequired,
+  onPlaceChange: PropTypes.func.isRequired,
+  place: PropTypes.string.isRequired
 };
 
 export default SearchPage;
